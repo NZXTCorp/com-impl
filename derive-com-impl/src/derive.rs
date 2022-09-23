@@ -107,7 +107,7 @@ impl<'a> ComImpl<'a> {
                     let count = (*ptr).#refcount.release();
                     if count == 0 {
                         // This was the last ref
-                        Box::from_raw(ptr);
+                        let _ = Box::from_raw(ptr);
                     }
                     count
                 }
